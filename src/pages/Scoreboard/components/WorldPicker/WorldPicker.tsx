@@ -3,10 +3,10 @@ import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import DatePicker from '@material-ui/lab/DatePicker';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { batch, useDispatch, useSelector } from 'react-redux';
 import { changeWorld } from '../../../../redux/global/global.reducer';
 import { State } from '../../../../redux/reducer';
-import { getStatisticsStart } from '../../../../redux/scoreboard/scoreboard.reducer';
+import { getStatisticsStart, setDate } from '../../../../redux/scoreboard/scoreboard.reducer';
 import { Divider, WorldPickerWrapper } from './WorldPicker.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +17,7 @@ const WorldPicker: React.FC = () => {
 
   const dispatch = useDispatch();
   const { world, market, activeWorldsList } = useSelector((state: State) => state.global);
+  const { date } = useSelector((state: State) => state.scoreboard);
 
   const toggleMarketMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
     setMarketMenuAnchor(event.currentTarget);
@@ -50,8 +51,15 @@ const WorldPicker: React.FC = () => {
               style: { height: '100%', width: '90%', display: 'flex', alignSelf: 'center' },
               fullWidth: true,
             }}
-            value={new Date()}
-            onChange={() => console.log('d')}
+            disableFuture
+            value={date}
+            onChange={(date) =>
+              date &&
+              batch(() => {
+                dispatch(setDate(date));
+                dispatch(getStatisticsStart());
+              })
+            }
             renderInput={(params) => <TextField {...params} helperText={null} variant="standard" />}
           />
         </LocalizationProvider>

@@ -6,6 +6,7 @@ interface State {
   playerRanking: null | PlayerRanking;
   allianceRanking: null | AllianceRanking;
   activeView: ActiveView;
+  date: Date;
   status: {
     loading: boolean;
     error: boolean;
@@ -16,6 +17,7 @@ const initialState: State = {
   playerRanking: null,
   allianceRanking: null,
   activeView: ActiveView.PLAYERS,
+  date: new Date(),
   status: {
     loading: true,
     error: false,
@@ -28,6 +30,9 @@ const scoreboardSlice = createSlice({
   reducers: {
     setActiveView: (state: State, { payload }: PayloadAction<ActiveView>) => {
       return { ...state, activeView: payload };
+    },
+    setDate: (state: State, { payload }: PayloadAction<Date>) => {
+      return { ...state, date: payload };
     },
     getStatisticsStart: (state: State) => {
       return { ...state, status: { ...state.status, loading: true } };
@@ -47,5 +52,5 @@ const scoreboardSlice = createSlice({
 });
 
 const { actions, reducer } = scoreboardSlice;
-export const { setActiveView, getStatisticsStart, getStatisticsSuccess, getStatisticsFailure } = actions;
+export const { setActiveView, setDate, getStatisticsStart, getStatisticsSuccess, getStatisticsFailure } = actions;
 export default reducer;
