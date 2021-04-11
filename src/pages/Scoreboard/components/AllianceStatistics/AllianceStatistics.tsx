@@ -19,7 +19,7 @@ const AllianceStatistics: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Grid container item alignItems={'center'} justifyContent={'center'} xs={12} sm={6} lg={3}>
+      <Grid container item alignContent={'baseline'} justifyContent={'center'} xs={12} sm={6} lg={3}>
         <ScoreTable
           title="Attack points"
           titleIcon={swords}
@@ -33,7 +33,7 @@ const AllianceStatistics: React.FC = () => {
           data={allianceRanking?.attack}
         />
       </Grid>
-      <Grid container item alignItems={'center'} justifyContent={'center'} xs={12} sm={6} lg={3}>
+      <Grid container item alignContent={'baseline'} justifyContent={'center'} xs={12} sm={6} lg={3}>
         <ScoreTable
           title="Defense points"
           titleIcon={shield}
@@ -47,7 +47,7 @@ const AllianceStatistics: React.FC = () => {
           data={allianceRanking?.defense}
         />
       </Grid>
-      <Grid container item alignItems={'center'} justifyContent={'center'} xs={12} sm={6} lg={3}>
+      <Grid container item alignContent={'baseline'} justifyContent={'center'} xs={12} sm={6} lg={3}>
         <ScoreTable
           title="Cities conquered"
           titleIcon={citiesGained}
@@ -61,7 +61,7 @@ const AllianceStatistics: React.FC = () => {
           data={allianceRanking?.conquest}
         />
       </Grid>
-      <Grid container item alignItems={'center'} justifyContent={'center'} xs={12} sm={6} lg={3}>
+      <Grid container item alignContent={'baseline'} justifyContent={'center'} xs={12} sm={6} lg={3}>
         <ScoreTable
           title="Cities lost"
           titleIcon={citiesLost}
