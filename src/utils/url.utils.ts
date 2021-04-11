@@ -1,4 +1,4 @@
-import { format, isDate, parse, toDate } from 'date-fns';
+import { format, isDate } from 'date-fns';
 
 export const objectToUrlParams = (object: Object) => {
   const paramsAsString = Object.entries(object).map(([key, value]) => {
