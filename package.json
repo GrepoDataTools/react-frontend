@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@date-io/date-fns": "^1.1.0",
+    "@date-io/date-fns": "^2.10.8",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -51,10 +51,10 @@
     ],
     "overrides": [
       {
-        "files": ["**/*.ts?(x)"],
-        "rules": {
-
-        }
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {}
       }
     ]
   },
