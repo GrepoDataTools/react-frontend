@@ -6,7 +6,7 @@ import { selectMarket, selectWorld } from '../global/global.selector';
 import { getStatisticsFailure, getStatisticsStart, getStatisticsSuccess } from './scoreboard.reducer';
 import { selectDate } from './scoreboard.selector';
 
-function* getStatistics(): SagaIterator<void> {
+function* getStatisticsSaga(): SagaIterator<void> {
   const market = yield select(selectMarket);
   const world = yield select(selectWorld);
   const date = yield select(selectDate);
@@ -27,7 +27,7 @@ function* getStatistics(): SagaIterator<void> {
 }
 
 function* onGetStatisticsStart(): SagaIterator<void> {
-  yield takeLatest(getStatisticsStart, getStatistics);
+  yield takeLatest(getStatisticsStart, getStatisticsSaga);
 }
 
 export function* scoreboardSaga(): SagaIterator<void> {

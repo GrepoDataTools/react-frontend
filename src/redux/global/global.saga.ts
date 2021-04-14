@@ -1,13 +1,13 @@
-import { SagaIterator } from "redux-saga";
-import { all, call, put, takeLatest } from "redux-saga/effects";
-import { getActiveWorlds } from "../../api/scoreboard";
-import { changeWorld, getServerListFailure, getServerListStart, getServerListSuccess } from "./global.reducer";
+import { SagaIterator } from 'redux-saga';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { getActiveWorlds } from '../../api/scoreboard';
+import { changeWorld, getServerListFailure, getServerListStart, getServerListSuccess } from './global.reducer';
 
-function* getServerList(): SagaIterator<void> {
+function* getServerListSaga(): SagaIterator<void> {
   try {
     const serverList = yield call(getActiveWorlds);
 
-    yield put(changeWorld({ market: "en", world: "132" }));
+    yield put(changeWorld({ market: 'en', world: '132' }));
     yield put(getServerListSuccess(serverList));
   } catch (e) {
     yield put(getServerListFailure());
@@ -15,7 +15,7 @@ function* getServerList(): SagaIterator<void> {
 }
 
 function* onGetServerListStart(): SagaIterator<void> {
-  yield takeLatest(getServerListStart, getServerList);
+  yield takeLatest(getServerListStart, getServerListSaga);
 }
 
 export function* globalSaga(): SagaIterator<void> {
