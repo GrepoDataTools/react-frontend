@@ -1,19 +1,17 @@
 import React from 'react';
-import { OverviewContainer, OverviewContent, OverviewSearchInput } from './Overview.styled';
+import { OverviewContainer, OverviewContent } from './Overview.styled';
 import { Grid } from '@material-ui/core';
 import AdvantageCard from '../AdvantageCard/AdvantageCard';
 import { faChartBar, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import Search from '../../../../components/Search/Search';
 
 const Overview: React.FC = () => (
   <OverviewContainer>
     <OverviewContent>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={6}>
-          <OverviewSearchInput variant="filled" label="Search players" fullWidth />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <OverviewSearchInput variant="filled" label="Search alliances" fullWidth />
+        <Grid item xs={12}>
+          <Search />
         </Grid>
         <Grid item xs={12} md={4}>
           <AdvantageCard

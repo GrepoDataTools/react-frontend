@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { theme } from '../../../../utils/theme.utils';
-import { TextField } from '@material-ui/core';
-import colors from '../../../../utils/colors';
 
 export const OverviewContainer = styled.div`
   display: flex;
@@ -24,9 +22,4 @@ export const OverviewContent = styled.div`
   ${[theme.breakpoints.between(theme.breakpoints.values.xs, theme.breakpoints.values.lg)]} {
     width: 80%;
   }
-`;
-
-export const OverviewSearchInput = styled(TextField)`
-  border-bottom: 1px ${colors.seaGreen};
-  font-size: 2rem;
 `;
