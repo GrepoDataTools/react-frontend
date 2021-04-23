@@ -1,1 +1,1 @@
-export const transformPlayerDetailResponse = (data) => {};
+export const transformPlayerDetailResponse = (data: any) => {};

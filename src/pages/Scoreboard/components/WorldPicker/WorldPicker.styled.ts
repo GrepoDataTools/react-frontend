@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../../../components/Layout/Header/colors';
+import colors from '../../../../utils/colors';
 
 export const WorldPickerWrapper = styled.div`
   border: 2px solid ${colors.fauxGreen};

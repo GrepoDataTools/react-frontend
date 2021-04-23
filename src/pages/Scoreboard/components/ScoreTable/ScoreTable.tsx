@@ -43,16 +43,18 @@ const ScoreTable: React.FC<ScoreTableProps> = (props) => {
       <TableContainer component={TableContainerComponent}>
         <Table>
           <TableHead>
-            <TableHeaderRow backgroundColor={props.headerColor}>
-              {props.headerTitles.map((title) => (
-                <TableCell component="th">{title}</TableCell>
+            <TableHeaderRow color={props.headerColor}>
+              {props.headerTitles.map((title, index) => (
+                <TableCell key={`${index + 1}`} component="th">
+                  {title}
+                </TableCell>
               ))}
             </TableHeaderRow>
           </TableHead>
           <TableBody>
             {props.loading || !props.data
-              ? Array.from(Array(props.rowsPerPage)).map(() => (
-                  <TableRow>
+              ? Array.from(Array(props.rowsPerPage)).map((_value, index) => (
+                  <TableRow key={`${index + 1}`}>
                     <TableCell height={20}>
                       <TextRow color="#E0E0E0" maxHeight={20} style={{ margin: 0 }} />
                     </TableCell>
@@ -67,8 +69,7 @@ const ScoreTable: React.FC<ScoreTableProps> = (props) => {
               : props.data
                   .slice(page * props.rowsPerPage, page * props.rowsPerPage + props.rowsPerPage)
                   .map((rankShard) => (
-                    <TableRow>
-                      {console.log(rankShard)}
+                    <TableRow key={rankShard.id}>
                       <TableCell>
                         {rankShard.index === 1 ? (
                           <FontAwesomeIcon icon={props.firstPlaceIcon} color={props.firstPlaceIconColor} />

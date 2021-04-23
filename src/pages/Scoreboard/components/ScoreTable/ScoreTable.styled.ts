@@ -9,11 +9,11 @@ export const TableContainerComponent = styled(Paper)`
 `;
 
 interface TableHeaderRowProps {
-  backgroundColor: string;
+  color: string;
 }
 
 export const TableHeaderRow = styled(TableRow)<TableHeaderRowProps>`
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ color }) => color};
   padding: 10px !important;
 `;
 

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import colors from "./colors";
+import styled from 'styled-components';
+import colors from '../../../utils/colors';
 
 export const Navigation = styled.nav`
   background-color: ${colors.fauxGreen};
@@ -16,6 +16,7 @@ export const LogoTitle = styled.h2`
   flex-direction: row;
   justify-content: center;
   margin-left: 1rem;
+  cursor: pointer;
 `;
 
 export const LogoGreen = styled.span`

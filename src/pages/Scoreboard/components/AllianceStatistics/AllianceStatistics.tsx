@@ -7,7 +7,7 @@ import swords from '../../../../assets/icons/swords.png';
 import { faTimesCircle, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import shield from '../../../../assets/icons/shield.png';
 import citiesGained from '../../../../assets/icons/city-plus.png';
-import colors from '../../../../components/Layout/Header/colors';
+import colors from '../../../../utils/colors';
 import citiesLost from '../../../../assets/icons/city-minus.png';
 
 const AllianceStatistics: React.FC = () => {

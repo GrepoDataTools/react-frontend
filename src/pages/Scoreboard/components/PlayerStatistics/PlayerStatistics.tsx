@@ -5,7 +5,7 @@ import { faTimesCircle, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import citiesGained from '../../../../assets/icons/city-plus.png';
 import shield from '../../../../assets/icons/shield.png';
 import swords from '../../../../assets/icons/swords.png';
-import colors from '../../../../components/Layout/Header/colors';
+import colors from '../../../../utils/colors';
 import citiesLost from '../../../../assets/icons/city-minus.png';
 import { useSelector } from 'react-redux';
 import { State } from '../../../../redux/reducer';

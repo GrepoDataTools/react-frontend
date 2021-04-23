@@ -65,6 +65,7 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
+    "prettier": "^2.2.1",
     "redux-devtools-extension": "^2.13.8"
   }
 }

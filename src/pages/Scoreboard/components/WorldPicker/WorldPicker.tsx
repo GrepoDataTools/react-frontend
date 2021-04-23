@@ -76,6 +76,7 @@ const WorldPicker: React.FC = () => {
       >
         {activeWorldsList.data?.map(({ server, worlds }) => (
           <MenuItem
+            key={server}
             onClick={() => {
               handleClose('market');
               dispatch(changeWorld({ market: server, world: worlds[0].val }));
@@ -104,6 +105,7 @@ const WorldPicker: React.FC = () => {
           ?.filter(({ server }) => server === market)[0]
           .worlds.map(({ val, name }) => (
             <MenuItem
+              key={val}
               onClick={() => {
                 handleClose('world');
                 dispatch(changeWorld({ market: market || 'en', world: val }));

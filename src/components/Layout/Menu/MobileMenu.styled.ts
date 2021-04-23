@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import colors from "../Header/colors";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import colors from '../../../utils/colors';
 
 export const MenuContainer = styled.div`
   background-color: ${colors.fauxGreen};
