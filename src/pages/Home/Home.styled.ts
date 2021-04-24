@@ -30,6 +30,7 @@ export const HeroContent = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  min-height: 400px;
 `;
 
 export const LogoTitle = styled.h2`

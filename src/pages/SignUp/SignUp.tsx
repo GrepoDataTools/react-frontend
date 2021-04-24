@@ -1,39 +1,53 @@
 import React from 'react';
-import { Container, Content, Title } from './SignUp.styled';
+import { Container, Content, SocialSignUp, Title } from './SignUp.styled';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import { Checkbox, FormControlLabel, FormGroup, TextField } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import SignUpForm from './SignUpForm/SignUpForm';
+import colors from '../../utils/colors';
 
 const SignUp: React.FC = () => {
   return (
     <Container>
       <Title>Sign Up</Title>
       <Content>
-        <Grid container spacing={6}>
-          <Grid item xs={6} display={'flex'} flexDirection="column" justifyContent={'center'}>
-            <TextField variant="outlined" label="Username (Public)" />
-            <TextField variant="outlined" label="Email Address (Private)" />
-            <TextField variant="outlined" label="Password" />
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox />}
-                label={'By submitting this form you agree to our Privacy Policy'}
-              />
-            </FormGroup>
-            <Button variant="contained" disableElevation>
-              Sign Up
-            </Button>
+        <Grid container>
+          <Grid item xs={6} style={{ backgroundColor: colors.seaGreen }}>
+            <SignUpForm />
           </Grid>
-          <Grid item xs={6} display={'flex'} flexDirection="column" justifyContent={'center'}>
-            <Button variant="contained" disableElevation>
+          <Grid
+            item
+            xs={6}
+            style={{ backgroundColor: 'white' }}
+            display={'flex'}
+            flexDirection="column"
+            alignItems={'center'}
+            justifyContent={'center'}
+          >
+            <SocialSignUp
+              socialColor={'#3b5998'}
+              variant="contained"
+              startIcon={<FontAwesomeIcon icon={faFacebook} />}
+              disableElevation
+            >
               Sign In with Facebook
-            </Button>
-            <Button variant="contained" disableElevation>
+            </SocialSignUp>
+            <SocialSignUp
+              socialColor={'#009eff'}
+              variant="contained"
+              startIcon={<FontAwesomeIcon icon={faTwitter} />}
+              disableElevation
+            >
               Sign In with Twitter
-            </Button>
-            <Button variant="contained" disableElevation>
+            </SocialSignUp>
+            <SocialSignUp
+              socialColor={'#8c9fff'}
+              variant="contained"
+              startIcon={<FontAwesomeIcon icon={faDiscord} />}
+              disableElevation
+            >
               Sign In with Discord
-            </Button>
+            </SocialSignUp>
           </Grid>
         </Grid>
       </Content>

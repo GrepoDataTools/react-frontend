@@ -17,7 +17,6 @@ import Discord from '../../assets/features/discord.png';
 import Indexer from '../../assets/features/indexer.png';
 import Player from '../../assets/features/player.png';
 import Scoreboard from '../../assets/features/scoreboard.png';
-import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
