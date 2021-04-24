@@ -6,6 +6,8 @@ import { Container } from './App.styled';
 import ScoreboardContainer from '../../pages/Scoreboard/Scoreboard.container';
 import HomeContainer from '../../pages/Home/Home.container';
 import Footer from '../Layout/Footer/Footer';
+import SignIn from '../../pages/SignIn/SignIn';
+import SignUp from '../../pages/SignUp/SignUp';
 
 const App: React.FC = () => (
   <Router>
@@ -16,6 +18,8 @@ const App: React.FC = () => (
     <Switch>
       <Route path="/" component={HomeContainer} exact />
       <Container>
+        <Route path="/sign-in" component={SignIn} exact />
+        <Route path="/sign-up" component={SignUp} exact />
         <Route path="/scoreboard" component={ScoreboardContainer} exact />
         <Route path="/player/:market/:playerId" render={() => <div>d</div>} exact />
       </Container>

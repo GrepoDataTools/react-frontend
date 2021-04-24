@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../utils/colors';
 import { theme } from '../../utils/theme.utils';
+import Button from '@material-ui/core/Button';
 
 export const ContentContainer = styled.div`
   padding: 50px 50px 100px 50px;
@@ -59,4 +60,9 @@ export const LogoSubtitle = styled.h5`
     margin-left: 5px;
     margin-right: 5px;
   }
+`;
+
+export const ContactUsButton = styled(Button)`
+  margin: 80px 0 !important;
+  color: white !important;
 `;

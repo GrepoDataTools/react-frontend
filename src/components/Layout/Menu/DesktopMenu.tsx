@@ -28,8 +28,21 @@ const DesktopMenu: React.FC = () => (
       </Link>
     </Grid>
     <Grid container item xs={2} alignItems="center" justifyContent="flex-end">
-      <FontAwesomeIcon icon={faBell} color={colors.snowDrop} style={{ marginRight: 20, fontSize: '1.5rem' }} />
-      <Avatar alt="My account" src="/images/avatar.png" style={{ marginRight: 20 }} />
+      {true ? (
+        <>
+          <Link to="/sign-in" activeClassName="active">
+            Sign In
+          </Link>
+          <Link to="/sign-up" activeClassName="active">
+            Sign Up
+          </Link>
+        </>
+      ) : (
+        <>
+          <FontAwesomeIcon icon={faBell} color={colors.snowDrop} style={{ marginRight: 20, fontSize: '1.5rem' }} />
+          <Avatar alt="My account" src="/images/avatar.png" style={{ marginRight: 20 }} />
+        </>
+      )}
     </Grid>
   </React.Fragment>
 );

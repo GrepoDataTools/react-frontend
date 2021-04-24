@@ -9,7 +9,11 @@ export const theme = createMuiTheme({
   },
   components: {
     MuiButton: {
-      styleOverrides: {},
+      styleOverrides: {
+        root: {
+          borderRadius: 2,
+        },
+      },
     },
   },
 });
