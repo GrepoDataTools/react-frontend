@@ -6,14 +6,18 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { setAutoFreeze } from 'immer';
 import AppContainer from './components/App/App.container';
+import { MuiThemeProvider } from '@material-ui/core';
+import { theme } from './utils/theme.utils';
 
 setAutoFreeze(false);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <AppContainer />
-    </Provider>
+    <MuiThemeProvider theme={theme}>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

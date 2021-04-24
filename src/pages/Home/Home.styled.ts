@@ -2,6 +2,18 @@ import styled from 'styled-components';
 import colors from '../../utils/colors';
 import { theme } from '../../utils/theme.utils';
 
+export const ContentContainer = styled.div`
+  padding: 50px 50px 100px 50px;
+  margin: auto;
+
+  ${[theme.breakpoints.up('lg')]} {
+    width: 65%;
+  }
+  ${[theme.breakpoints.between(theme.breakpoints.values.xs, theme.breakpoints.values.lg)]} {
+    width: 80%;
+  }
+`;
+
 export const HeroContainer = styled.div`
   height: 400px;
   width: 100%;

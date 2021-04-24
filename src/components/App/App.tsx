@@ -5,6 +5,7 @@ import Header from '../Layout/Header/Header';
 import { Container } from './App.styled';
 import ScoreboardContainer from '../../pages/Scoreboard/Scoreboard.container';
 import HomeContainer from '../../pages/Home/Home.container';
+import Footer from '../Layout/Footer/Footer';
 
 const App: React.FC = () => (
   <Router>
@@ -19,6 +20,7 @@ const App: React.FC = () => (
         <Route path="/player/:market/:playerId" render={() => <div>d</div>} exact />
       </Container>
     </Switch>
+    <Footer />
   </Router>
 );
 
