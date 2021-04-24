@@ -16,7 +16,6 @@ import Discord from '../../assets/features/discord.png';
 import Indexer from '../../assets/features/indexer.png';
 import Player from '../../assets/features/player.png';
 import Scoreboard from '../../assets/features/scoreboard.png';
-import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 const Home: React.FC = () => (
   <React.Fragment>
