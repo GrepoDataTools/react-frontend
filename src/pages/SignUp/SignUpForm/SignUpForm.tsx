@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Label, HelperText } from './SignUpForm.styled';
+import { Form, Input, Label, HelperText, SignInText } from './SignUpForm.styled';
 import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import schema from './schema';
 import colors from '../../../utils/colors';
 import { ErrorMessage } from '@hookform/error-message';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 
 const SignUpForm: React.FC = () => {
   const {
@@ -48,7 +51,13 @@ const SignUpForm: React.FC = () => {
         </FormGroup>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox color={'default'} onChange={(e) => setValue('privacy', e.target.checked)} />}
+            control={
+              <Checkbox
+                color={'default'}
+                defaultChecked={false}
+                onChange={(e) => setValue('privacy', e.target.checked)}
+              />
+            }
             label={'By submitting this form you agree to our Privacy Policy'}
             {...register('privacy')}
           />
@@ -64,6 +73,12 @@ const SignUpForm: React.FC = () => {
         >
           Sign Up
         </Button>
+        <SignInText>
+          Already have an account?{' '}
+          <Link to="/sign-in">
+            Sign in <FontAwesomeIcon icon={faLongArrowAltRight} />
+          </Link>
+        </SignInText>
       </Form>
     </>
   );

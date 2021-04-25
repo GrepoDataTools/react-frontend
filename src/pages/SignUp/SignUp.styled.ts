@@ -1,12 +1,31 @@
 import styled from 'styled-components';
-import colors from '../../utils/colors';
 import Button from '@material-ui/core/Button';
+import { theme } from '../../utils/theme.utils';
+import Grid from '@material-ui/core/Grid';
+
+export const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  background: linear-gradient(-45deg, #6d8eac, #6b6b83, #3b8d99);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 30s ease infinite;
+  animation: gradient 30s ease infinite;
+`;
 
 export const Container = styled.div`
   position: relative;
   width: 70%;
-  margin: auto;
+  margin: -100px auto 0;
   border-radius: 15px;
+  padding-bottom: 50px;
+
+  ${[theme.breakpoints.down('sm')]} {
+    width: 90%;
+  }
 `;
 
 export const Content = styled.div`
@@ -37,12 +56,6 @@ export const Content = styled.div`
     -ms-flex-pack: center;
     justify-content: center;
     background: white;
-    border-image-source: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(24, 188, 156, 1) 50%,
-      rgba(24, 188, 156, 1) 100%
-    );
     -webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -51,6 +64,14 @@ export const Content = styled.div`
     -webkit-transform: translate(0, 0);
     -ms-transform: translate(0, 0);
     transform: translate(0, 0);
+
+    ${[theme.breakpoints.down('lg')]} {
+      top: 35%;
+    }
+
+    ${[theme.breakpoints.down('sm')]} {
+      display: none;
+    }
   }
   &:after {
     position: absolute;
@@ -60,23 +81,29 @@ export const Content = styled.div`
     bottom: 0;
     margin: auto;
     content: '';
-    background: rgba(128, 128, 128, 0.3);
     height: 100%;
     width: 0.12em;
     z-index: 900;
   }
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
 `;
 
 export const Title = styled.h2`
-  color: ${colors.seaGreen};
-  margin: auto;
-  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 30px;
+  font-size: 3rem;
   text-align: center;
-  padding-bottom: 50px;
+  font-weight: bold;
 `;
 
-export const EmailSignUp = styled.div``;
+export const Subtitle = styled.span`
+  color: white;
+  text-align: center;
+`;
+
+export const SocialGrid = styled(Grid)`
+  padding: 30px 0;
+`;
 
 interface SocialSignUpProps {
   socialColor: string;

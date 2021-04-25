@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { theme } from '../../../utils/theme.utils';
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 40px 70px;
+
+  ${[theme.breakpoints.down('sm')]} {
+    padding: 20px 30px;
+  }
 
   & > div {
     padding-bottom: 10px;
@@ -48,4 +53,13 @@ export const Input = styled.input<InputProps>`
 export const HelperText = styled(FormHelperText)`
   font-weight: bold !important;
   color: #8b0000 !important;
+`;
+
+export const SignInText = styled.span`
+  padding-top: 20px;
+  text-align: center;
+
+  ${[theme.breakpoints.down('sm')]} {
+    padding-bottom: 20px;
+  }
 `;
