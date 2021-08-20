@@ -7,7 +7,7 @@ function* getServerListSaga(): SagaIterator<void> {
   try {
     const serverList = yield call(getActiveWorlds);
 
-    yield put(changeWorld({ market: 'en', world: '132' }));
+    yield put(changeWorld({ market: 'en', world: '136' }));
     yield put(getServerListSuccess(serverList));
   } catch (e) {
     yield put(getServerListFailure());

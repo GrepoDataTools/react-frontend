@@ -11,7 +11,7 @@ import AllianceStatistics from './components/AllianceStatistics/AllianceStatisti
 const Scoreboard: React.FC = () => {
   const { activeView } = useSelector((state: State) => state.scoreboard);
   return (
-    <React.Fragment>
+    <div style={{ padding: 20 }}>
       <Grid container justifyContent="space-between">
         <Grid item xs={'auto'}>
           <Switcher />
@@ -26,7 +26,7 @@ const Scoreboard: React.FC = () => {
           <img src="https://via.placeholder.com/2000x280" style={{ width: '100%' }} alt={'Ad placeholder'} />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </div>
   );
 };
 

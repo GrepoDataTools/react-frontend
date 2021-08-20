@@ -1,4 +1,7 @@
 import { format, isDate } from 'date-fns';
+import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory();
 
 export const objectToUrlParams = (object: Object) => {
   const paramsAsString = Object.entries(object).map(([key, value]) => {

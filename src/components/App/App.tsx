@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import GlobalStyle from './Global.styled';
 import Header from '../Layout/Header/Header';
 import { Container } from './App.styled';
@@ -8,9 +8,10 @@ import HomeContainer from '../../pages/Home/Home.container';
 import Footer from '../Layout/Footer/Footer';
 import SignIn from '../../pages/SignIn/SignIn';
 import SignUp from '../../pages/SignUp/SignUp';
+import { history } from '../../utils/url.utils';
 
 const App: React.FC = () => (
-  <Router>
+  <Router history={history}>
     <div>
       <GlobalStyle />
       <Header />

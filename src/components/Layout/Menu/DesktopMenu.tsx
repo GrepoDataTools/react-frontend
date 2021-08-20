@@ -1,50 +1,51 @@
 import React from 'react';
-import { Avatar, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Link } from './DesktopMenu.styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/free-regular-svg-icons';
-import colors from '../../../utils/colors';
+import { useSelector } from 'react-redux';
+import { isSignedIn } from '../../../redux/user/user.selector';
+import UserBox from '../UserBox/UserBox';
 
-const DesktopMenu: React.FC = () => (
-  <React.Fragment>
-    <Grid container item xs={8} alignItems="center">
-      <Link to="/scoreboard" activeClassName="active">
-        Scoreboard
-      </Link>
-      <Link to="/compare" activeClassName="active">
-        Compare
-      </Link>
-      <Link to="/rankings" activeClassName="active">
-        Rankings
-      </Link>
-      <Link to="/indexer" activeClassName="active">
-        City Indexer
-      </Link>
-      <Link to="/discord" activeClassName="active">
-        Discord
-      </Link>
-      <Link to="/contract" activeClassName="active">
-        Contact
-      </Link>
-    </Grid>
-    <Grid container item xs={2} alignItems="center" justifyContent="flex-end">
-      {true ? (
-        <>
-          <Link to="/sign-in" activeClassName="active">
-            Sign In
-          </Link>
-          <Link to="/sign-up" activeClassName="active">
-            Sign Up
-          </Link>
-        </>
-      ) : (
-        <>
-          <FontAwesomeIcon icon={faBell} color={colors.snowDrop} style={{ marginRight: 20, fontSize: '1.5rem' }} />
-          <Avatar alt="My account" src="/images/avatar.png" style={{ marginRight: 20 }} />
-        </>
-      )}
-    </Grid>
-  </React.Fragment>
-);
+const DesktopMenu: React.FC = () => {
+  const signedIn = useSelector(isSignedIn);
+
+  return (
+    <React.Fragment>
+      <Grid container item xs={8} alignItems="center">
+        <Link to="/scoreboard" activeClassName="active">
+          Scoreboard
+        </Link>
+        <Link to="/compare" activeClassName="active">
+          Compare
+        </Link>
+        <Link to="/rankings" activeClassName="active">
+          Rankings
+        </Link>
+        <Link to="/indexer" activeClassName="active">
+          City Indexer
+        </Link>
+        <Link to="/discord" activeClassName="active">
+          Discord
+        </Link>
+        <Link to="/contract" activeClassName="active">
+          Contact
+        </Link>
+      </Grid>
+      <Grid container item xs={2} alignItems="center" justifyContent="flex-end" style={{ paddingRight: 20 }}>
+        {!signedIn ? (
+          <>
+            <Link to="/sign-in" activeClassName="active">
+              Sign In
+            </Link>
+            <Link to="/sign-up" activeClassName="active">
+              Sign Up
+            </Link>
+          </>
+        ) : (
+          <UserBox />
+        )}
+      </Grid>
+    </React.Fragment>
+  );
+};
 
 export default DesktopMenu;
