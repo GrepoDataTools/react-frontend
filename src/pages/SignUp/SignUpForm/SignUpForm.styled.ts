@@ -12,7 +12,7 @@ export const Form = styled.form`
   }
 
   & > div {
-    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
 `;
 

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { InferType } from 'yup';
-import schema from '../../pages/SignIn/SignInForm/schema';
+import { default as SignInFormSchema } from '../../pages/SignIn/SignInForm/schema';
+import { default as SignUpFormSchema } from '../../pages/SignUp/SignUpForm/schema';
 
 interface UserState {
   information: {
@@ -45,14 +46,28 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
+  extraReducers: {
+    LOCATION_CHANGE: (state: UserState) => {
+      return { ...state, status: { ...initialState.status, signedIn: state.status.signedIn } };
+    },
+  },
   reducers: {
-    signInStart: (state: UserState, _action: PayloadAction<InferType<typeof schema>>) => {
+    signInStart: (state: UserState, _action: PayloadAction<InferType<typeof SignInFormSchema>>) => {
       return { ...state, status: { ...state.status, loading: true } };
     },
     signInSuccess: (state: UserState, { payload }) => {
       return { ...state, information: payload, status: { ...state.status, loading: false, signedIn: true } };
     },
     signInFailure: (state: UserState, { payload }) => {
+      return { ...state, status: { ...state.status, loading: false, error: true, errorMessage: payload } };
+    },
+    signUpStart: (state: UserState, _action: PayloadAction<InferType<typeof SignUpFormSchema>>) => {
+      return { ...state, status: { ...state.status, loading: true } };
+    },
+    signUpSuccess: (state: UserState, { payload }) => {
+      return { ...state, information: payload, status: { ...state.status, loading: false, signedIn: true } };
+    },
+    signUpFailure: (state: UserState, { payload }) => {
       return { ...state, status: { ...state.status, loading: false, error: true, errorMessage: payload } };
     },
     logOut: () => {
@@ -62,5 +77,5 @@ const userSlice = createSlice({
 });
 
 const { actions, reducer } = userSlice;
-export const { signInStart, signInSuccess, signInFailure, logOut } = actions;
+export const { signInStart, signInSuccess, signInFailure, signUpStart, signUpSuccess, signUpFailure, logOut } = actions;
 export default reducer;

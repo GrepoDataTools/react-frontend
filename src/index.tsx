@@ -8,8 +8,13 @@ import { setAutoFreeze } from 'immer';
 import AppContainer from './components/App/App.container';
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from './utils/theme.utils';
+import { history } from './utils/url.utils';
 
 setAutoFreeze(false);
+
+history.listen((location) => {
+  store.dispatch({ type: 'LOCATION_CHANGE' });
+});
 
 ReactDOM.render(
   <React.StrictMode>
