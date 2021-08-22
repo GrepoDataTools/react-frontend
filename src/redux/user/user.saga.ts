@@ -1,7 +1,16 @@
 import { SagaIterator } from 'redux-saga';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { signInFailure, signInStart, signInSuccess, signUpStart, signUpSuccess, signUpFailure } from './user.reducer';
-import { signIn, signUp } from '../../api/user';
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+  signUpStart,
+  signUpSuccess,
+  signUpFailure,
+  fetchIndexesStart,
+  fetchIndexesSuccess,
+} from './user.reducer';
+import { getIndexes, signIn, signUp } from '../../api/user';
 import { InferType } from 'yup';
 import { default as SignInFormSchema } from '../../pages/SignIn/SignInForm/schema';
 import { default as SignUpFormSchema } from '../../pages/SignUp/SignUpForm/schema';
@@ -58,6 +67,17 @@ function* signUpSaga({ payload }: PayloadAction<InferType<typeof SignUpFormSchem
   }
 }
 
+function* fetchIndexesSaga(): SagaIterator<void> {
+  try {
+    const { items } = yield call(getIndexes);
+
+    yield put(fetchIndexesSuccess(items));
+  } catch (e) {
+    const errorMessage: string = ErrorResponse[`E${e.response?.data.error_code}` as keyof typeof ErrorResponse];
+    yield put(signUpFailure(errorMessage));
+  }
+}
+
 function* onSignInStart(): SagaIterator<void> {
   yield takeLatest(signInStart, signInSaga);
 }
@@ -66,6 +86,10 @@ function* onSignUpStart(): SagaIterator<void> {
   yield takeLatest(signUpStart, signUpSaga);
 }
 
+function* onFetchIndexesStart(): SagaIterator<void> {
+  yield takeLatest(fetchIndexesStart, fetchIndexesSaga);
+}
+
 export function* userSaga(): SagaIterator<void> {
-  yield all([call(onSignInStart), call(onSignUpStart)]);
+  yield all([call(onSignInStart), call(onSignUpStart), call(onFetchIndexesStart)]);
 }

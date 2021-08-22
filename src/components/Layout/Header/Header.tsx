@@ -9,12 +9,12 @@ import { useHistory } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [isMobileView, setIsMobileView] = useState<boolean>(window.matchMedia('(max-width: 795px)').matches);
+  const [isMobileView, setIsMobileView] = useState<boolean>(window.matchMedia('(max-width: 1200px)').matches);
 
   const history = useHistory();
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const checkForMobileView = () => setIsMobileView(window.matchMedia('(max-width: 795px)').matches);
+  const checkForMobileView = () => setIsMobileView(window.matchMedia('(max-width: 1200px)').matches);
   const navigateToHome = () => history.push('/');
 
   useEffect(() => {

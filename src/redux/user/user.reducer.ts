@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { InferType } from 'yup';
 import { default as SignInFormSchema } from '../../pages/SignIn/SignInForm/schema';
 import { default as SignUpFormSchema } from '../../pages/SignUp/SignUpForm/schema';
+import { Index } from '../../types/Indexer';
 
 interface UserState {
   information: {
@@ -15,6 +16,7 @@ interface UserState {
     refreshToken?: string;
     expiresIn?: number;
   };
+  indexes: Array<Index>;
   status: {
     loading: boolean;
     signedIn: boolean;
@@ -35,6 +37,7 @@ const initialState: UserState = {
     refreshToken: undefined,
     expiresIn: undefined,
   },
+  indexes: [],
   status: {
     loading: false,
     signedIn: false,
@@ -70,6 +73,15 @@ const userSlice = createSlice({
     signUpFailure: (state: UserState, { payload }) => {
       return { ...state, status: { ...state.status, loading: false, error: true, errorMessage: payload } };
     },
+    fetchIndexesStart: (state: UserState) => {
+      return { ...state, status: { ...state.status, loading: true } };
+    },
+    fetchIndexesSuccess: (state: UserState, { payload }) => {
+      return { ...state, indexes: payload, status: { ...state.status, loading: false } };
+    },
+    fetchIndexesFailure: (state: UserState, { payload }) => {
+      return { ...state, status: { ...state.status, loading: false, error: true, errorMessage: payload } };
+    },
     logOut: () => {
       return initialState;
     },
@@ -77,5 +89,16 @@ const userSlice = createSlice({
 });
 
 const { actions, reducer } = userSlice;
-export const { signInStart, signInSuccess, signInFailure, signUpStart, signUpSuccess, signUpFailure, logOut } = actions;
+export const {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+  signUpStart,
+  signUpSuccess,
+  signUpFailure,
+  fetchIndexesStart,
+  fetchIndexesSuccess,
+  fetchIndexesFailure,
+  logOut,
+} = actions;
 export default reducer;

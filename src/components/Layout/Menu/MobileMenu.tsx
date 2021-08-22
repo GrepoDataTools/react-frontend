@@ -1,14 +1,19 @@
-import React from "react";
-import { Hidden } from "@material-ui/core";
-import { Link, MenuContainer, MenuItems } from "./MobileMenu.styled";
+import React from 'react';
+import { Hidden } from '@material-ui/core';
+import { Link, MenuContainer, MenuItems } from './MobileMenu.styled';
+import { useSelector } from 'react-redux';
+import { selectStatus, selectUser } from '../../../redux/user/user.selector';
 
 interface IMobileMenu {
   open: boolean;
 }
 
 const MobileMenu: React.FC<IMobileMenu> = ({ open }) => {
+  const { signedIn } = useSelector(selectStatus);
+  const { username } = useSelector(selectUser);
+
   return (
-    <Hidden mdUp={true} mdDown={!open}>
+    <Hidden lgUp={true} lgDown={!open}>
       <MenuContainer>
         <MenuItems>
           <Link to="/scoreboard" activeClassName="active">
@@ -29,6 +34,18 @@ const MobileMenu: React.FC<IMobileMenu> = ({ open }) => {
           <Link to="/contract" activeClassName="active">
             Contact
           </Link>
+          {!signedIn ? (
+            <>
+              <Link to="/sign-in" activeClassName="active">
+                Sign In
+              </Link>
+              <Link to="/sign-up" activeClassName="active">
+                Sign Up
+              </Link>
+            </>
+          ) : (
+            <span>{username}</span>
+          )}
         </MenuItems>
       </MenuContainer>
     </Hidden>
